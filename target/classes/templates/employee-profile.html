@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" content="Theme Region"/>
+    <meta name="description" content=""/>
+
+    <title>Seeker | Job Portal HTML Template</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/jquery-te.css"/>
+    <link rel="stylesheet" href="css/slick.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
+
+
+    <!-- icons -->
+    <link rel="icon" href="images/ico/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png"/>
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="https://demo.themeregion.com/seeker/images/ico/apple-touch-icon-72-precomposed.png"/>
+    <link rel="apple-touch-icon" sizes="57x57" href="images/ico/apple-touch-icon-57-precomposed.png"/>
+    <!-- icons -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Template Developed By ThemeRegion -->
+</head>
+<body>
+<header class="tr-header">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img class="img-responsive" src="images/logo.png" alt="Logo"/></a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <div class="navbar-left">
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="tr-dropdown"><a href="/index">Home</a></li>
+                        <li><a href="/addJob">Post A Job</a></li>
+                        <li><a href="/listing">Job List</a></li>
+                        <li class="tr-dropdown active"><a href="#">Pages</a>
+                            <ul class="tr-dropdown-menu tr-list fadeInUp" role="menu">
+                                <li><a class="active" href="/employeeProfile">Employee Profile</a></li>
+                                <li><a href="/profileMark">Employer Profile</a></li>
+                                <li><a href="/signUp">Sign Up</a></li>
+                                <li><a href="/signIn">Sign In</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- /.navbar-left -->
+
+            <div class="navbar-right">
+                <div class="dropdown tr-change-dropdown">
+                    <i class="fa fa-globe"></i>
+                    <a data-toggle="dropdown" href="employee-profile.html#" aria-expanded="false"><span
+                            class="change-text">United Kingdom</span><i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown-menu tr-change tr-list">
+                        <li><a href="employee-profile.html#">United Kingdom</a></li>
+                        <li><a href="employee-profile.html#">United States</a></li>
+                        <li><a href="employee-profile.html#">China</a></li>
+                        <li><a href="employee-profile.html#">Russia</a></li>
+                    </ul>
+                </div><!-- /.language-dropdown -->
+                <ul class="sign-in tr-list">
+                    <li><i class="fa fa-user"></i></li>
+                    <li><a href="/signIn">Sign In </a></li>
+                    <li><a href="/signUp">Register</a></li>
+                </ul><!-- /.sign-in -->
+
+                <a href="/addJob" class="btn btn-primary">Post Job</a>
+            </div><!-- /.nav-right -->
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+</header><!-- /.tr-header -->
+
+<div class="tr-breadcrumb bg-image section-before">
+    <div class="container">
+        <div class="breadcrumb-info text-center">
+            <div class="user-image">
+                <img th:src="@{/image(fileName=${currentUser.picUrl})}" alt="Image" class="img-responsive"/>
+            </div>
+            <div class="user-title">
+                <h1 th:text="${currentUser.name}"></h1>
+            </div>
+            <ul class="job-meta tr-list list-inline">
+                <li th:if="${currentUser.companyAddress != ''}"><i class="fa fa-map-marker" aria-hidden="true"
+                                                                   th:text="${currentUser.companyAddress}"></i></li>
+                <li th:if="${currentUser.userPhone != ''}"><i class="fa fa-phone" aria-hidden="true"
+                                                              th:text="${currentUser.userPhone}"></i></li>
+                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#" th:text="${currentUser.email}"></a>
+                </li>
+                <li th:if="${currentUser.profession != ''}"><i class="fa fa-briefcase" aria-hidden="true"
+                                                               th:text="${currentUser.profession}"></i></li>
+            </ul>
+            <ul class="breadcrumb-social social-icon-bg  tr-list">
+                <li><a href="employee-profile.html#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+                <li><a href="employee-profile.html#"><i class="fa fa-twitter"></i> <span>Twitter</span> </a></li>
+                <li><a href="employee-profile.html#"><i class="fa fa-google-plus"></i> <span>Google Plus</span> </a>
+                </li>
+                <li><a href="employee-profile.html#"><i class="fa fa-linkedin"></i><span>Linkedin</span> </a></li>
+                <li><a href="employee-profile.html#"><i class="fa fa-dribbble"></i> <span>Dribbble</span></a></li>
+                <li><a href="employee-profile.html#"><i class="fa fa-behance"></i> <span>Behance</span></a></li>
+                <li><a href="employee-profile.html#"><i class="fa fa-globe"></i> <span>Website</span> </a></li>
+            </ul>
+        </div>
+    </div><!-- /.container -->
+</div><!-- /.tr-breadcrumb -->
+
+
+<div style="text-align: center">
+    <h3 style="color: #00e800" th:if="${message != null}" th:text="${message}"></h3>
+</div>
+<div class="tr-profile section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-3">
+                <div class="tr-sidebar">
+                    <ul class="nav nav-tabs profile-tabs section" role="tablist">
+                        <li role="presentation" class="active"><a href="employee-profile.html#account-info"
+                                                                  aria-controls="account-info" role="tab"
+                                                                  data-toggle="tab"><i class="fa fa-life-ring"
+                                                                                       aria-hidden="true"></i> Account
+                            Info</a></li>
+                        <li role="presentation"><a href="employee-profile.html#resume" aria-controls="resume" role="tab"
+                                                   data-toggle="tab"><span><i class="fa fa-user-o"
+                                                                              aria-hidden="true"></i></span> My
+                            Resume</a></li>
+                        <li role="presentation"><a href="employee-profile.html#edit-resume" aria-controls="edit-resume"
+                                                   role="tab" data-toggle="tab"><span><i class="fa fa-pencil-square-o"
+                                                                                         aria-hidden="true"></i></span>
+                            Edit Resume</a></li>
+                        <li role="presentation"><a href="employee-profile.html#bookmark" aria-controls="bookmark"
+                                                   role="tab" data-toggle="tab"><span><i class="fa fa-bookmark-o"
+                                                                                         aria-hidden="true"></i></span>
+                            Bookmark</a></li>
+                        <li role="presentation"><a href="employee-profile.html#archived" aria-controls="archived"
+                                                   role="tab" data-toggle="tab"><span><i class="fa fa-clone"
+                                                                                         aria-hidden="true"></i></span>
+                            Archived Apply Job</a></li>
+                        <li role="presentation"><a href="employee-profile.html#close-account"
+                                                   aria-controls="close-account" role="tab" data-toggle="tab"><span><i
+                                class="fa fa-scissors" aria-hidden="true"></i></span> Close Account</a></li>
+                    </ul>
+                    <a href="employee-profile.html#" class="btn btn-primary"><i class="fa fa-cloud-download"
+                                                                                aria-hidden="true"></i> <span>Download Resume as doc</span></a>
+                </div><!-- /.tr-sidebar -->
+            </div>
+            <div class="col-sm-8 col-md-9">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active account-info" id="account-info">
+                        <div class="tr-fun-fact">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="fun-fact">
+                                        <div class="fun-fact-icon">
+                                            <img src="images/icons/fun-fact4.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <div class="media-body">
+                                            <h1 class="counter">329</h1>
+                                            <span>Viewed my resume</span>
+                                        </div>
+                                    </div><!-- /.fun-fact -->
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="fun-fact">
+                                        <div class="fun-fact-icon">
+                                            <img src="images/icons/fun-fact5.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <div class="media-body">
+                                            <h1 class="counter">32</h1>
+                                            <span>Application submit</span>
+                                        </div>
+                                    </div><!-- /.fun-fact -->
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="fun-fact">
+                                        <div class="fun-fact-icon">
+                                            <img src="images/icons/fun-fact6.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <div class="media-body">
+                                            <h1 class="counter">27</h1>
+                                            <span>Call for interview</span>
+                                        </div>
+                                    </div><!-- /.fun-fact -->
+                                </div>
+                            </div><!-- ./row -->
+                        </div><!-- /.tr-fun-fact -->
+
+                        <div class="section resume-last-updated">
+                            <span class="icon pull-left"><img src="images/icons/1.png" alt="Icon"
+                                                              class="img-responsive"/></span>
+                            <div class="updated-info">
+                                <span class="pull-left">Resume last updated on</span>
+                                <span class="pull-right">24/4/2017</span>
+                            </div>
+                        </div><!-- /.resume-last-updated -->
+
+                        <div class="section display-information">
+                            <div class="title title-after">
+                                <div class="icon"><img src="images/icons/2.png" alt="Icon" class="img-responsive"/>
+                                </div>
+                                <span>Your display Information</span>
+                            </div>
+
+
+                            <div class="change-photo">
+                                <div class="user-image">
+                                    <img th:src="@{/image(fileName=${currentUser.picUrl})}" alt="Image"
+                                         class="img-responsive"/>
+                                </div>
+                                <div class="upload-photo">
+
+                                    <form th:action="@{/changeProfilePhoto}" method="post"
+                                          enctype="multipart/form-data">
+                                        <label class="btn btn-primary" for="upload-photo">
+                                            <input type="file" name="picUrlUser" id="upload-photo"/>
+                                            Change Photo
+                                        </label>
+
+                                        <button type="submit">OK</button>
+                                    </form>
+
+
+                                </div>
+                            </div>
+
+
+                            <ul class="tr-list account-details">
+                                <li>Name<span th:text="${currentUser.name}"></span></li>
+                                <li>Surname<span th:text="${currentUser.surname}"></span></li>
+                                <li th:if="${currentUser.userPhone != ''}">Phone Number<span
+                                        th:text="${currentUser.userPhone}"></span></li>
+                                <li>Email Id<span><a href="#" th:text="${currentUser.email}"></a></span></li>
+                                <li th:if="${currentUser.profession != ''}">Profession<span
+                                        th:text="${currentUser.profession}"></span></li>
+                            </ul>
+                        </div><!-- /.display-information -->
+                        <div class="section">
+                            <div class="title title-after">
+                                <div class="icon"><img src="images/icons/3.png" alt="Icon" class="img-responsive"/>
+                                </div>
+                                <span>Social Link</span>
+                            </div>
+                            <ul class="social social-icon-bg tr-list">
+                                <li><i class="fa fa-facebook"></i><span class="media-body"><a
+                                        href="employee-profile.html#">https://www.facebook.com/jhondoe</a></span></li>
+                                <li><i class="fa fa-twitter"></i><span class="media-body"><a
+                                        href="employee-profile.html#">https://www.twitter.com/jhondoe</a></span></li>
+                                <li><i class="fa fa-google-plus"></i><span class="media-body"><a
+                                        href="employee-profile.html#">https://www.googleplus.com/jhondoe</a></span></li>
+                                <li><i class="fa fa-linkedin"></i><span class="media-body"><a
+                                        href="employee-profile.html#">https://www.linkedin.com/jhondoe</a></span></li>
+                                <li><i class="fa fa-dribbble"></i><span class="media-body"><a
+                                        href="employee-profile.html#">https://www.dribbble.com/jhondoe</a></span></li>
+                                <li><i class="fa fa-behance"></i><span class="media-body"><a
+                                        href="employee-profile.html#">https://www.behance.com/jhondoe</a></span></li>
+                                <li><i class="fa fa-globe"></i><span class="media-body"><a
+                                        href="employee-profile.html#">https://www.globe.com/jhondoe</a></span></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.tab-pane -->
+
+
+                    <div role="tabpanel" class="tab-pane section" id="resume">
+                        <ul class="tr-list resume-info">
+                            <li class="career-objective">
+                                <div class="icon">
+                                    <i class="fa fa-black-tie" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span class="tr-title">Career Objective</span>
+                                    <p th:if="${currentUserInfo != null}" th:text="${currentUserInfo.userInfo}"></p>
+                                </div>
+                            </li><!-- /.career-objective -->
+                            <li class="work-history">
+                                <div class="icon">
+                                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span class="tr-title">Work History</span>
+                                    <ul class="tr-list">
+                                        <li>
+                                            <span th:if="${currentUserInfo != null}" th:text="${currentUserInfo.jobTitle}"></span>
+                                            <hr/>
+                                           From <span th:if="${currentUserInfo != null}" th:text="${currentUserInfo.from}"></span>
+                                           To <span th:if="${currentUserInfo != null}" th:text="${currentUserInfo.to}"></span>
+                                            <hr/>
+                                            <p th:if="${currentUserInfo != null}" th:text="${currentUserInfo.companyName}"></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><!-- /.work-history -->
+                            <li class="education-background">
+                                <div class="icon">
+                                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span class="tr-title">Education Background</span>
+                                    <ul class="tr-list">
+                                        <li>
+                                            <p th:if="${currentUserInfo != null}" th:text="${currentUserInfo.instituteName}"></p>
+                                            <hr/>
+                                            <ul class="tr-list">
+                                                From <span th:if="${currentUserInfo != null}" th:text="${currentUserInfo.fromYear}"></span>
+
+                                               To <span th:if="${currentUserInfo != null}" th:text="${currentUserInfo.toYear}"></span>
+                                                <hr/>
+                                             Degree   <p th:if="${currentUserInfo != null}" th:text="${currentUserInfo.degree}"></p>
+                                                <hr/>
+                                              Result  <p th:if="${currentUserInfo != null}" th:text="${currentUserInfo.result}"></p>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><!-- /.education-background -->
+                            <li class="qualification">
+                                <div class="icon">
+                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span class="tr-title">Special Qualification:</span>
+                                     <p th:if="${currentUserInfo != null}"
+                                         th:text="${currentUserInfo.specialQualification}"></p>
+                                </div>
+                            </li><!-- /.qualification -->
+                            <li class="language-proficiency">
+                                <div class="icon">
+                                    <i class="fa fa-language" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span class="tr-title">Language Proficiency:</span>
+
+                                    <p th:if="${currentUserInfo != null}" th:text="${currentUserInfo.language}"></p>
+
+                                </div>
+                            </li><!-- /.language-proficiency -->
+                            <li class="personal-deatils">
+                                <div class="icon">
+                                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span class="tr-title">Personal Deatils</span>
+                                    <ul class="tr-list">
+                                        <li><span class="left">Full Name</span><span class="middle">:</span> <span
+                                                th:if="${currentUserInfo != null}" class="right"
+                                                th:text="${currentUserInfo.fullName}"></span></li>
+                                        <li><span class="left">Father's Name </span><span class="middle">:</span> <span
+                                                th:if="${currentUserInfo != null}" class="right"
+                                                th:text="${currentUserInfo.fathersName}"></span></li>
+                                        <li><span class="left">Date of Birth</span><span class="middle">:</span> <span
+                                                th:if="${currentUserInfo != null}" class="right"
+                                                th:text="${currentUserInfo.dateOfBirth}"></span></li>
+                                        <li><span class="left">Birth Place</span><span class="middle">:</span> <span
+                                                th:if="${currentUserInfo != null}" class="right"
+                                                th:text="${currentUserInfo.birthPlace}"></span></li>
+                                        <li><span class="left">Nationality</span><span class="middle">:</span> <span
+                                                th:if="${currentUserInfo != null}" class="right"
+                                                th:text="${currentUserInfo.nationality}"></span></li>
+                                        <li><span class="left">Sex</span><span class="middle">:</span> <span
+                                                th:if="${currentUserInfo != null}" class="right"
+                                                th:text="${currentUserInfo.sex}"></span></li>
+                                        <li><span class="left">Address</span><span class="middle">:</span> <span
+                                                th:if="${currentUserInfo != null}" class="right"
+                                                th:text="${currentUserInfo.address}"></span></li>
+                                    </ul>
+                                </div>
+                            </li><!-- /.personal-deatils -->
+                            <li class="personal-deatils">
+                                <div class="icon">
+                                    <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                    <span class="tr-title">Declaration</span>
+                                    <p th:if="${currentUserInfo != null}" th:text="${currentUserInfo.declaration}"></p>
+                                </div>
+                            </li><!-- /.personal-deatils -->
+                        </ul>
+
+                    </div><!-- /.tab-pane -->
+
+
+                    <div role="tabpanel" class="tab-pane edit-resume section" id="edit-resume">
+                        <form th:action="@{/addUserInfo}" th:object="${userInfoObject}" method="post">
+                            <ul class="tr-list resume-info">
+                                <li class="career-objective">
+                                    <div class="icon">
+                                        <i class="fa fa-black-tie" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="tr-title">Career Objective</span>
+                                        <div class="code-edit">
+
+
+                                            <textarea th:field="*{userInfo}" style="max-width: 700px; min-width: 700px; max-height: 317px; min-height: 317px; overflow: no-display"></textarea>
+                                        </div>
+                                    </div>
+                                </li><!-- /.career-objective -->
+                                <li class="work-history">
+                                    <div class="icon">
+                                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body additem-work">
+                                        <span class="tr-title">Work History</span>
+                                        <div id="addhistory" class="additem">
+                                            <span class="icon remove"><i class="fa fa-times"
+                                                                         aria-hidden="true"></i></span>
+                                            <div class="code-edit-small">
+                                                <label>Job Title</label>
+                                                <div class="code-edit"><input type="text" th:field="*{jobTitle}"
+                                                                              width="100%"/></div>
+                                                <label>Compnay Name</label>
+                                                <div class="code-edit"><input type="text" th:field="*{companyName}"
+                                                                              width="100%"/></div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <label>From</label>
+                                                        <div class="calendar">
+                                                            <input type="date" th:field="*{from}" class="form-control"/>
+                                                        </div><!-- calendar -->
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <label>To</label>
+                                                        <div class="calendar">
+                                                            <input type="date" th:field="*{to}" class="form-control"/>
+                                                        </div><!-- calendar -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li><!-- /.work-history -->
+                                <li class="education-background">
+                                    <div class="icon">
+                                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body additem-edu">
+                                        <span class="tr-title">Education Background</span>
+                                        <div id="add-edu" class="additem">
+                                            <span class="icon remove"><i class="fa fa-times"
+                                                                         aria-hidden="true"></i></span>
+
+                                            <div class="code-edit-small">
+                                                <label>Degree</label>
+                                                <div class="code-edit"><input type="text" th:field="*{degree}"
+                                                                              width="100%"/></div>
+                                                <label>Institute Name</label>
+                                                <div class="code-edit"><input type="text" th:field="*{instituteName}"
+                                                                              width="100%"/></div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <label>From Year</label>
+                                                        <div class="calendar">
+                                                            <input type="date" class="form-control"
+                                                                   th:field="*{fromYear}"/>
+                                                        </div><!-- calendar -->
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-4">
+                                                        <label>To Year (or expected)</label>
+                                                        <div class="calendar">
+                                                            <input type="date" class="form-control"
+                                                                   th:field="*{toYear}"/>
+                                                        </div><!-- calendar -->
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-4">
+
+                                                        <div class="code-edit"><span> <input type="text" th:field="*{result}" /></span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div><!-- /.additem -->
+                                    </div>
+                                </li><!-- /.education-background -->
+                                <li class="qualification">
+                                    <div class="icon">
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="tr-title">Special Qualification:</span>
+                                        <div class="code-edit">
+                                            <textarea th:field="*{specialQualification}"
+                                                      style="max-width: 700px; min-width: 700px; max-height: 317px; min-height: 317px; overflow: no-display"></textarea>
+                                        </div>
+                                    </div>
+                                </li><!-- /.qualification -->
+                                <li class="language-proficiency code-edit-small">
+                                    <div class="icon">
+                                        <i class="fa fa-language" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="tr-title">Language Proficiency:(Please enumerate)</span>
+                                        <div class="rating-star">
+                                            <input type="text" th:field="*{language}" width="100%"/>
+
+                                        </div>
+
+                                    </div>
+                                </li><!-- /.language-proficiency -->
+                                <li class="personal-deatils code-edit-small">
+                                    <div class="icon">
+                                        <i class="fa fa-user-secret" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="tr-title">Personal Deatils</span>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label>Full Name<span class="pull-right">:</span> </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" th:field="*{fullName}" width="100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label>Father's Name<span class="pull-right">:</span> </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" th:field="*{fathersName}" width="100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label>Date of Birth<span class="pull-right">:</span> </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="calendar">
+                                                    <input type="date" class="form-control" th:field="*{dateOfBirth}"/>
+                                                </div><!-- calendar -->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label>Birth Place<span class="pull-right">:</span> </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" th:field="*{birthPlace}" width="100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label>Nationality<span class="pull-right">:</span> </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" th:field="*{nationality}" width="100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label>Sex<span class="pull-right">:</span> </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" th:field="*{sex}" width="100%"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label>Address<span class="pull-right">:</span> </label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" th:field="*{address}" width="100%"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li><!-- /.personal-deatils -->
+                                <li class="personal-deatils">
+                                    <div class="icon">
+                                        <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <span class="tr-title">Declaration</span>
+                                        <div class="code-edit">
+                                            <textarea th:field="*{declaration}"
+                                                      style="max-width: 700px; min-width: 700px; max-height: 317px; min-height: 317px; overflow: no-display"></textarea>
+                                        </div>
+                                    </div>
+                                </li><!-- /.personal-deatils -->
+                            </ul>
+                            <div class="buttons pull-right">
+                                <a href="/employeeProfile" class="btn button-cancle">Cancle</a>
+                                <button type="submit" class="btn btn-primary">Update Your Resume</button>
+                            </div>
+
+                        </form>
+
+                    </div><!-- /.tab-pane -->
+
+
+
+
+
+
+
+
+
+
+                    <div role="tabpanel" class="tab-pane bookmark" id="bookmark">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3" th:each="wishJob:${wishList}">
+                                <div class="job-item">
+                                    <div class="item-overlay">
+                                        <div class="job-info">
+                                            <a th:href="@{/jobDetails(jobId=${wishJob.job.id})}"
+                                               class="btn btn-primary">Details</a><br/>
+                                            <a href="listing.html#" class="btn btn-primary" th:if="${wishJob != null}"
+                                               th:text="${wishJob.job.categoryByTime}"></a>
+                                            <span class="tr-title">
+                    <a href="job-details.html" th:if="${wishJob != null}"
+                       th:text="${wishJob.job.category}"></a>
+                    <span><a href="listing.html#" th:if="${job != null}"
+                             th:text="${wishJob.job.title}"></a></span>
+                    </span>
+                                            <ul class="tr-list job-meta">
+                                                <li><i class="fa fa-map-signs" aria-hidden="true" th:if="${wishJob != null}"
+                                                       th:text="${wishJob.job.city}"></i></li>
+                                                <span th:if="${wishJob != null}" th:text="${wishJob.job.address}"></span>
+                                                <li th:if="${wishJob != null}" th:text="${wishJob.job.level}"><i
+                                                        class="fa fa-briefcase" aria-hidden="true"></i></li>
+                                                <li th:if="${wishJob!= null}" th:text="${wishJob.job.salaryInfo}"><i class="fa fa-money"
+                                                                                                          aria-hidden="true"></i>
+                                                </li>
+                                            </ul>
+                                            <ul class="job-social tr-list">
+                                                <li><a href="listing.html#"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                </li>
+                                                <li><a href="listing.html#"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
+                                                </li>
+                                                <li><a href="job-details.html"><i class="fa fa-long-arrow-right"
+                                                                                  aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="job-info">
+                                        <div class="company-logo">
+                                            <div th:if="${wishJob != null}">
+                                                <img th:if="${wishJob.job.picUser != ''}" th:src="@{/image(fileName=${wishJob.job.picUser})}"
+                                                     class="img-responsive" width="100px" height="100px"/>
+                                            </div>
+                                            <div th:if="${wishJob != null}">
+                                                <img th:if="${wishJob.job.picCompany != ''}"
+                                                     th:src="@{/image(fileName=${wishJob.job.picCompany})}" class="img-responsive"
+                                                     width="100px" height="100px"/>
+                                            </div>
+
+                                        </div>
+                                        <span class="tr-title">
+                    <a th:if="${wishJob != null}" th:text="${wishJob.job.category}" href="listing.html#"></a>
+                    <span><a href="listing.html#" th:if="${wishJob != null}" th:text="${wishJob.job.title}"></a></span>
+                    </span>
+                                        <ul class="tr-list job-meta">
+                                            <li><i class="fa fa-map-signs" aria-hidden="true" th:if="${wishJob != null}"
+                                                   th:text="${wishJob.job.city}"></i></li>
+                                            <span th:if="${wishJob != null}" th:text="${wishJob.job.address}"></span>
+                                            <li th:if="${wishJob != null}" th:text="${wishJob.job.level}"><i
+                                                    class="fa fa-briefcase" aria-hidden="true"></i></li>
+                                            <li th:if="${wishJob != null}" th:text="${wishJob.job.salaryInfo}"><i class="fa fa-money"
+                                                                                                      aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                        <div class="time">
+                                            <a href="listing.html#" th:if="${wishJob != null}"><span
+                                                    th:text="${wishJob.job.categoryByTime}"></span></a>
+                                            <span class="pull-right" th:if="${wishJob != null}" th:text="${wishJob.job.published}"></span>
+                                        </div>
+                                    </div>
+
+                                    <!--<div id="ajaxPart"></div>-->
+
+
+                                </div>
+                            </div>
+                        </div><!-- /.row -->
+                    </div><!-- /.tab-pane -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div role="tabpanel" class="tab-pane apply-job" id="archived">
+                        <div class="job-item">
+                            <div class="job-info">
+                                <div class="left-content">
+                                    <div class="clearfix">
+                                        <div class="company-logo">
+                                            <img src="images/job/1.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <span class="tr-title">
+												<a href="job-details.html">Design Associate</a><span><a
+                                                href="employee-profile.html#">Loop</a></span>
+											</span>
+                                        <span><a href="employee-profile.html#"
+                                                 class="btn btn-primary">Part Time</a></span>
+                                    </div>
+                                    <ul class="tr-list job-meta">
+                                        <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
+                                            Francisco, CA, US
+                                        </li>
+                                        <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid Level
+                                        </li>
+                                        <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000 - $6,000
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <a href="employee-profile.html#" class="btn button-cancle">Delete application</a>
+                                    <span class="applied">Applied: 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item remove-item">
+                            <div class="job-info">
+                                <div class="left-content">
+                                    <div class="clearfix">
+                                        <div class="company-logo">
+                                            <img src="images/job/2.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <span class="tr-title">
+												<a href="job-details.html">Design Associate</a><span><a
+                                                href="employee-profile.html#">Loop</a></span>
+											</span>
+                                        <span><a href="employee-profile.html#"
+                                                 class="btn btn-primary">Part Time</a></span>
+                                    </div>
+                                    <ul class="tr-list job-meta">
+                                        <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
+                                            Francisco, CA, US
+                                        </li>
+                                        <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid Level
+                                        </li>
+                                        <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000 - $6,000
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <a href="employee-profile.html#" class="btn button-cancle">Delete application</a>
+                                    <span class="applied">Applied: 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item remove-item">
+                            <div class="job-info">
+                                <div class="left-content">
+                                    <div class="clearfix">
+                                        <div class="company-logo">
+                                            <img src="images/job/3.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <span class="tr-title">
+												<a href="job-details.html">Design Associate</a><span><a
+                                                href="employee-profile.html#">Loop</a></span>
+											</span>
+                                        <span><a href="employee-profile.html#"
+                                                 class="btn btn-primary">Part Time</a></span>
+                                    </div>
+                                    <ul class="tr-list job-meta">
+                                        <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
+                                            Francisco, CA, US
+                                        </li>
+                                        <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid Level
+                                        </li>
+                                        <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000 - $6,000
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <a href="employee-profile.html#" class="btn button-cancle">Delete application</a>
+                                    <span class="applied">Applied: 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item remove-item">
+                            <div class="job-info">
+                                <div class="left-content">
+                                    <div class="clearfix">
+                                        <div class="company-logo">
+                                            <img src="images/job/4.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <span class="tr-title">
+												<a href="job-details.html">Design Associate</a><span><a
+                                                href="employee-profile.html#">Loop</a></span>
+											</span>
+                                        <span><a href="employee-profile.html#"
+                                                 class="btn btn-primary">Part Time</a></span>
+                                    </div>
+                                    <ul class="tr-list job-meta">
+                                        <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
+                                            Francisco, CA, US
+                                        </li>
+                                        <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid Level
+                                        </li>
+                                        <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000 - $6,000
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <a href="employee-profile.html#" class="btn button-cancle">Delete application</a>
+                                    <span class="applied">Applied: 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item remove-item">
+                            <div class="job-info">
+                                <div class="left-content">
+                                    <div class="clearfix">
+                                        <div class="company-logo">
+                                            <img src="images/job/5.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <span class="tr-title">
+												<a href="job-details.html">Design Associate</a><span><a
+                                                href="employee-profile.html#">Loop</a></span>
+											</span>
+                                        <span><a href="employee-profile.html#"
+                                                 class="btn btn-primary">Part Time</a></span>
+                                    </div>
+                                    <ul class="tr-list job-meta">
+                                        <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
+                                            Francisco, CA, US
+                                        </li>
+                                        <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid Level
+                                        </li>
+                                        <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000 - $6,000
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <a href="employee-profile.html#" class="btn button-cancle">Delete application</a>
+                                    <span class="applied">Applied: 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item remove-item">
+                            <div class="job-info">
+                                <div class="left-content">
+                                    <div class="clearfix">
+                                        <div class="company-logo">
+                                            <img src="images/job/6.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <span class="tr-title">
+												<a href="job-details.html">Design Associate</a><span><a
+                                                href="employee-profile.html#">Loop</a></span>
+											</span>
+                                        <span><a href="employee-profile.html#"
+                                                 class="btn btn-primary">Part Time</a></span>
+                                    </div>
+                                    <ul class="tr-list job-meta">
+                                        <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
+                                            Francisco, CA, US
+                                        </li>
+                                        <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid Level
+                                        </li>
+                                        <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000 - $6,000
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <a href="employee-profile.html#" class="btn button-cancle">Delete application</a>
+                                    <span class="applied">Applied: 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item remove-item">
+                            <div class="job-info">
+                                <div class="left-content">
+                                    <div class="clearfix">
+                                        <div class="company-logo">
+                                            <img src="images/job/7.png" alt="images" class="img-responsive"/>
+                                        </div>
+                                        <span class="tr-title">
+												<a href="job-details.html">Design Associate</a><span><a
+                                                href="employee-profile.html#">Loop</a></span>
+											</span>
+                                        <span><a href="employee-profile.html#"
+                                                 class="btn btn-primary">Part Time</a></span>
+                                    </div>
+                                    <ul class="tr-list job-meta">
+                                        <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
+                                            Francisco, CA, US
+                                        </li>
+                                        <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid Level
+                                        </li>
+                                        <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000 - $6,000
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="right-content">
+                                    <a href="employee-profile.html#" class="btn button-cancle">Delete application</a>
+                                    <span class="applied">Applied: 3 weeks ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.tab-pane -->
+
+                    <div role="tabpanel" class="tab-pane section close-account" id="close-account">
+                        <h1>Delete Your Account</h1>
+                        <span>Are you sure, you want to delete your account?</span>
+                        <div class="buttons">
+                            <a href="/deleteAccount" class="btn btn-primary">Delete Account</a>
+                            <a href="/employeeProfile" class="btn button-cancle">Cancle</a>
+                        </div>
+                    </div><!-- /.tab-pane -->
+                </div>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div><!-- /.tr-profile -->
+
+<div class="tr-download-app bg-image section-padding section-before">
+    <div class="container text-center">
+        <h1>Download on App Store</h1>
+        <div class="app-content">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="download-app">
+                        <a href="employee-profile.html#">
+                            <div class="download-image">
+                                <img src="images/icons/app1.png" alt="Image" class="img-responsive"/>
+                            </div>
+                            <div class="download-info">
+                                <span>available on</span>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="download-app">
+                        <a href="employee-profile.html#">
+                            <div class="download-image">
+                                <img src="images/icons/app2.png" alt="Image" class="img-responsive"/>
+                            </div>
+                            <div class="download-info">
+                                <span>available on</span>
+                                <strong>App Store</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="download-app">
+                        <a href="employee-profile.html#">
+                            <div class="download-image">
+                                <img src="images/icons/app3.png" alt="Image" class="img-responsive"/>
+                            </div>
+                            <div class="download-info">
+                                <span>available on</span>
+                                <strong>Windows Store</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.app-content -->
+    </div><!-- /.contaioner -->
+</div><!--/. tr-download-app -->
+
+<div class="footer">
+    <div class="footer-top section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <h3>About Us</h3>
+                        <ul class="tr-list">
+                            <li><a href="employee-profile.html#">About Seeker</a></li>
+                            <li><a href="employee-profile.html#">Terms and Conditions</a></li>
+                            <li><a href="employee-profile.html#">International Partners</a></li>
+                            <li><a href="employee-profile.html#">Privacy Policy</a></li>
+                            <li><a href="employee-profile.html#">Feedback</a></li>
+                            <li><a href="employee-profile.html#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <h3>Job Seekers</h3>
+                        <ul class="tr-list">
+                            <li><a href="employee-profile.html#">Create Account</a></li>
+                            <li><a href="employee-profile.html#">Career Counseling</a></li>
+                            <li><a href="employee-profile.html#">My Bdjobs</a></li>
+                            <li><a href="employee-profile.html#">FAQ</a></li>
+                            <li><a href="employee-profile.html#">Video Guides</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <h3>Employers</h3>
+                        <ul class="tr-list">
+                            <li><a href="employee-profile.html#">Create Account</a></li>
+                            <li><a href="employee-profile.html#">Products/Service</a></li>
+                            <li><a href="employee-profile.html#">Post a Job</a></li>
+                            <li><a href="employee-profile.html#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-widget">
+                        <h3>Newsletter</h3>
+                        <p>Earum cumque doloribus, incidunt! Tempora voluptatibus</p>
+                        <form class="contact-form" method="post" action="employee-profile.html#">
+                            <div class="form-group">
+                                <input type="email" class="form-control" required="required"
+                                       placeholder="Your email Id"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.footer-top -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="copyright">
+                <p>Copyright © 2017 <a href="employee-profile.html#">Seeker.com.</a> All rights reserved.</p>
+            </div>
+            <div class="footer-social pull-right">
+                <ul class="tr-list">
+                    <li><a href="employee-profile.html#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="employee-profile.html#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="employee-profile.html#" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="employee-profile.html#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- /.footer-bottom -->
+</div><!-- /.footer -->
+
+
+<!-- JS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/inview.min.js"></script>
+<script src="js/counterup.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/jquery-te.min.js"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="js/gmaps.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>	
